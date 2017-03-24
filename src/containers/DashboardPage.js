@@ -13,7 +13,7 @@ const DashboardPage = () => {
     <div>
       <div className="row">
         <div className="col-md-12 m-b-15 ">
-          <Ranking apiUrl="http://demo7987876.mockable.io/thunder/loadRankerInfo"/>
+          <Ranking apiUrl="http://10.202.49.132:8888/loadRankerInfo"/>
         </div>
       </div>
     </div>
