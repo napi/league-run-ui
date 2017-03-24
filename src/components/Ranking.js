@@ -1,8 +1,13 @@
 import React, {PropTypes} from 'react';
 import fetch from "isomorphic-fetch";
+import _ from "lodash";
 import {Table, TableBody, TableFooter, TableHeader, TableHeaderColumn, TableRow, TableRowColumn}
   from 'material-ui/Table';
 import Avatar from 'material-ui/Avatar';
+
+const onlyUnique = (value, index, self) => { 
+  return self.indexOf(value) === index;
+}
 
 class Ranking extends React.Component {
   static propTypes = {
@@ -27,17 +32,27 @@ class Ranking extends React.Component {
   }
 
   componentDidMount() {
-    this._getData(this.props.apiUrl).then(data => {
+    this.interval = setInterval(this.tick.bind(this), 5000);
+  }
+
+  tick() {
+    const {apiUrl} = this.props;
+
+    this._fetch(apiUrl).then(data => {
       this.setState({ rankList: data });
     });
   }
 
-  _getData(url) {
+  _fetch(url) {
     return fetch(url)
       .then(response => response.json());
   }
 
   render() {
+    const rankList = _.uniqBy(this.state.rankList, (e) => {
+      return e.userId;
+    });
+
     return (
       <div className="ranking">
         <h1 className="header-ranking"></h1>
@@ -52,11 +67,10 @@ class Ranking extends React.Component {
               <TableRowColumn className="list-column-rank"></TableRowColumn>
               <TableRowColumn className="list-column-avatar"></TableRowColumn>
               <TableRowColumn className="list-column-name"></TableRowColumn>
-              <TableRowColumn className="list-column-time">Time</TableRowColumn>
               <TableRowColumn className="list-column-combo">Max Combo</TableRowColumn>
               <TableRowColumn className="list-column-score">Score</TableRowColumn>
             </TableRow>
-            {this.state.rankList.map( (item, index) => (
+            {rankList.map( (item, index) => (
               <TableRow key={index} data-tier={index + 1} className={
                 (index <= 2) ? 'top-ranker ranker list-row' :
                 (index <= 4) ? 'ranker list-row' : 'list-row'
@@ -64,9 +78,8 @@ class Ranking extends React.Component {
                 <TableRowColumn className="list-column-rank">{index + 1}</TableRowColumn>
                 <TableRowColumn className="list-column-avatar"><Avatar className="avatar" src={item.photoUrl}/></TableRowColumn>
                 <TableRowColumn className="list-column-name">{item.firstName} {item.middleName} {item.lastName}</TableRowColumn>
-                <TableRowColumn className="list-column-time">{item.travellingTime}</TableRowColumn>
                 <TableRowColumn className="list-column-combo">{item.maxCombo}</TableRowColumn>
-                <TableRowColumn className="list-column-score">{item.totalCombo}</TableRowColumn>
+                <TableRowColumn className="list-column-score">{item.score}</TableRowColumn>
               </TableRow>
               ))}
           </TableBody>
