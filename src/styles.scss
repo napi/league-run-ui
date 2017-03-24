@@ -1,0 +1,315 @@
+ html {
+  font-family: 'Roboto', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body, h1, h2, h3, h4, h5, h6 {
+  font-size: 15px;
+  margin: 0;
+  line-height: 24px;
+}
+
+body {
+  // background: #efefef url(./images/background.jpg) no-repeat;
+  // background-attachment: fixed;
+  // background-size: cover;
+  background-color: #efefef;
+}
+
+body, html, #app, #app > div{
+  height: 100%;
+}
+
+#app {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+a {
+  color: #ff4081;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.m-b-15 {
+  margin-bottom: 15px
+}
+
+.hidden {
+  display: none !important;
+}
+
+
+.tier-gold {
+  font-size: 4em !important;
+  font-weight: bold !important;
+  color: #FFF !important;
+  text-shadow: 0 0 14px rgb(0, 232, 255);
+  background: url(./images/tier_gold.png) center 70% no-repeat;
+  background-size: 80% auto;
+}
+
+.tier-silver {
+  font-size: 3em !important;
+  font-weight: bold !important;
+  color: #FFF !important;
+  text-shadow: 0 0 14px rgb(0, 232, 255);
+  background: url(./images/tier_silver.png) center 70% no-repeat;
+  background-size: 80% auto;
+}
+
+.tier-bronze {
+  font-size: 2.6em !important;
+  font-weight: bold !important;
+  color: #FFF !important;
+  text-shadow: 0 0 14px rgb(0, 232, 255);
+  background: url(./images/tier_bronze.png) center 70% no-repeat;
+  background-size: 80% auto;
+}
+
+.tier-rage {
+  font-size: 4em !important;
+  font-weight: bold !important;
+  color: #FFF !important;
+  text-shadow: 0 0 14px rgb(0, 232, 255);
+  background: url(./images/tier_rage.png) center center no-repeat;
+  background-size: 80% auto;
+}
+
+.header-ranking,
+.header-postgame {
+  text-indent: -999999px;
+  overflow: hidden;
+  margin-bottom: 10px;
+  height: 100px;
+  background: #efefef url(./images/brand.png) 158px 0 no-repeat;
+  background-size: contain;
+}
+.header-postgame {
+  background: #efefef url(./images/endofgame.png) center 0 no-repeat;
+  background-size: contain;
+}
+
+
+
+/* POSTGAME */
+.post-game {
+  ol {
+    margin: 80px 0 0; padding: 0;
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+
+    li {
+      position: relative;
+      font-size: 20pt;
+      order: 1000;
+      box-sizing: border-box;
+      background-color: #292323;
+
+      .list-container {
+        .list-avatar {
+          position: absolute;
+          z-index: 0;
+          top: 0; bottom: 0;
+          left: 0; right: 0;
+          background-size: cover;
+          background-repeat: no-repeat;
+        }
+
+        .list-detail-info {
+          position: absolute;
+          z-index: 10;
+          left: 0; right: 0;
+          bottom: 0;
+          padding: 15px;
+          color: #FFF;
+          text-shadow: 1px 1px 2px rgba(255,255,255, .3);
+          background: rgba(0,0,0,.5);
+
+          .list-name {
+            margin-bottom: 10px;
+          }
+
+          .list-define {
+            font-size: .7em;
+            color: #cfddf3;
+          }
+
+          .list-number {
+            font-weight: bold;
+            color: #d0fcfd;
+          }
+        }
+      }
+
+      &.top-ranker {
+        flex: 1 auto;
+        margin: 0 0 20px 0;
+        width: 30%;
+
+        .list-rank {
+          position: absolute;
+          z-index: 0;
+          top: -120px; bottom: 0;
+          left: 0; right: 0;
+          padding-top: 190px;
+          text-indent: 20px;
+        }
+
+        &:nth-child(1) {
+          order: 2;
+          margin: 0 20px 20px 20px;
+          height: 350px;
+
+          .list-rank {
+            @extend .tier-gold;
+            background-position: center 0;
+          }
+        }
+        &:nth-child(2) {
+          order: 1;
+          margin-top: 50px;
+          height: 300px;
+
+          .list-rank {
+            @extend .tier-silver;
+            background-position: center 0;
+          }
+        }
+        &:nth-child(3) {
+          order: 3;
+          margin-top: 80px;
+          height: 270px;
+
+          .list-rank {
+            @extend .tier-bronze;
+            background-position: center 0;
+          }
+        }
+      }
+
+      &.rage-guy {
+        margin: 0 auto;
+        width: 500px;
+        height: 500px;
+
+        &:before {
+          content:'';
+          position: absolute;
+          z-index: 1;
+          top: 30%;
+          left: -100px;
+          width: 100px;
+          height: 100px;
+          background: url(./images/Arrow_comic_right_red_T.png) left center no-repeat;
+          background-size: contain;
+        }
+        &:after {
+          content:'';
+          position: absolute;
+          z-index: 1;
+          top: 15%;
+          right: -100px;
+          width: 100px;
+          height: 100px;
+          background: url(./images/Arrow_comic_left_red_T.png) left center no-repeat;
+          background-size: contain;
+        }
+
+        .list-avatar {
+        }
+
+        .list-rank {
+          position: absolute;
+          z-index: 0;
+          top: 0; bottom: 0;
+          left: 0; right: 0;
+          padding-top: 50px;
+          text-indent: 20px;
+          @extend .tier-rage;
+          background-size: 300px auto;
+          background-position: right bottom;
+        }
+      }
+    }
+  }
+}
+
+/* RANKING */
+.ranking {
+  .list-row-header {
+    border-bottom: none !important;
+  }
+  .list-row {
+    
+    td {
+      padding-top: 1em !important;
+      padding-bottom: 1em !important;
+    }
+    .list-column-rank {
+      width: 10em;
+      padding: 0 !important;
+      text-align: center !important;
+      font-size: 17px !important;
+      color: grey;
+      text-shadow: 1px 1px 2px rgba(0,0,0,.25)
+    }
+
+    .list-column-avatar {padding: 0 !important; width: 80px !important; text-align: center !important;}
+    .list-column-name {}
+    .list-column-score {padding: 0 !important; width: 7em;text-align: center !important; 
+      color: #ff8830;
+    }
+    .list-column-combo {padding: 0 !important; width: 7em;text-align: center !important;}
+    .list-column-time {padding: 0 !important; width: 7em;text-align: center !important;}
+
+    img.avatar {
+      width: 50px !important;
+      height: auto !important;
+    }
+
+    &.top-ranker {
+    }
+
+    &[data-tier="1"] {
+      .list-column-rank {
+        @extend .tier-gold;
+      }
+    }
+
+    &[data-tier="2"] {
+      .list-column-rank {
+        @extend .tier-silver;
+      }
+    }
+
+    &[data-tier="3"] {
+      .list-column-rank {
+        @extend .tier-bronze;
+      }
+    }
+
+    &.ranker {
+      td {
+        font-size: 20pt !important;
+      }
+      .list-column-rank {
+        color: #000;
+      }
+      img.avatar {
+        width: 80px !important;
+      }
+    }
+
+    &.list-row-header {
+      font-size: 15pt !important;
+      color: skyblue !important;
+    }
+  }
+}
+
+
