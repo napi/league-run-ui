@@ -13,7 +13,7 @@ const DashboardPage = () => {
     <div>
       <div className="row">
         <div className="col-md-12 m-b-15 ">
-          <Ranking apiUrl="http://10.202.49.132:8888/loadRankerInfo"/>
+          <Ranking apiUrl="http://localhost:8888/loadRankerInfo"/>
         </div>
       </div>
     </div>

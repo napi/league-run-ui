@@ -23,9 +23,9 @@ const EndOfGame = () => {
       <div className="row">
         <div className="col-md-12 m-b-15 ">
           <PostGame
-            lastGameInfo="http://10.202.49.132:8888/lastGameInfo"
-            isRunning="http://10.202.49.132:8888/manage/isRunningGame"
-            getPlayer="http://10.202.49.132:8888/manage/currentPlayers"
+            lastGameInfo="http://localhost:8888/lastGameInfo"
+            isRunning="http://localhost:8888/manage/isRunningGame"
+            getPlayer="http://localhost:8888/manage/currentPlayers"
           />
         </div>
       </div>
