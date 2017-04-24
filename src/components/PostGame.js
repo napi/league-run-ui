@@ -34,7 +34,7 @@ class PostGame extends React.Component {
 
   componentDidMount() {
     this.interval = setInterval(this.tick.bind(this), 5000);
-    this._fetch('http://localhost:8888/manage/noteList').then(res => {
+    this._fetch('http://10.230.32.31:8888/manage/noteList').then(res => {
       this.setState({jukebox: res.noteList});
     })
   }
@@ -86,7 +86,7 @@ class PostGame extends React.Component {
   handleChange(ev, index, value) {
     this.setState({music: value});
 
-    const setMusicLink = `http://localhost:8888/manage/note/${value}`;
+    const setMusicLink = `http://10.230.32.31:8888/manage/note/${value}`;
     fetch(setMusicLink);
   }
 
